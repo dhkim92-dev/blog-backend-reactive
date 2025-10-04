@@ -1,0 +1,78 @@
+spring:
+  profiles:
+    active: ${DHKIM92_SPRING_PROFILE_ACTIVE:prod}
+  application:
+    name: blog-reactive
+  r2dbc:
+    url: r2dbc:postgresql://${DHKIM92_POSTGRES_HOST}:${DHKIM92_POSTGRES_PORT}/${DHKIM92_POSTGRES_DB_NAME}
+    username: ${DHKIM92_POSTGRES_USERNAME}
+    password: ${DHKIM92_POSTGRES_PASSWORD}
+  flyway:
+    url: jdbc:postgresql://${DHKIM92_POSTGRES_HOST}:${DHKIM92_POSTGRES_PORT}/${DHKIM92_POSTGRES_DB_NAME}
+    user: ${DHKIM92_FLYWAY_USERNAME}
+    password: ${DHKIM92_FLYWAY_PASSWORD}
+    clean_disabled: ${DHKIM92_FLYWAY_CLEAN_DISABLED:true}
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: ${DHKIM92_OAUTH2_GITHUB_CLIENT_ID}
+            client-secret: ${DHKIM92_OAUTH2_GITHUB_CLIENT_SECRET}
+            scope: profile
+            redirect-uri: ${DHKIM92_OAUTH2_GITHUB_REDIRECT_URL:http://localhost:8080/login/oauth2/code/github}
+            authorization-grant-type: authorization_code
+      redirect-on-success: ${DHKIM92_FRONTEND_HOST:http://localhost:3000/}
+  webflux:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+jwt:
+  access-token:
+    secret: ${DHKIM92_JWT_ACCESS_TOKEN_SECRET:test-access-key}
+    expiry: 900000 # 15 minutes
+  refresh-token:
+    secret: ${DHKIM92_JWT_REFRESH_TOKEN_SECRET:test-refresh-key}
+    expiry: 1209600000 # 14 days
+  issuer: https://identifier.dohoon-kim.kr
+  audience: https://www.dohoon-kim.kr
+
+cors:
+  allowed-origins: ${DHKIM92_CORS_ALLOWED_ORIGINS:http://localhost:3000,http://localhost:8080}
+
+cookie:
+  secure: ${DHKIM92_COOKIE_SECURE:false} # true for https
+  http-only: true
+  same-site: Lax
+
+auth:
+  oauth2:
+    redirect-to: ${DHKIM92_FRONTEND_HOST:http://localhost:3000/}
+    authorization-request-cookie-name: OAUTH2_AUTHORIZATION_REQUEST
+    authorization-request-cookie-expiry: 180
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui/index.html
+    disable-swagger-default-url: true
+    urls:
+      - url: /v3/api-docs
+        name: API Documentation
+    config-url: /v3/api-docs/swagger-config
+    urls-primary-name: API Documentation
+  api-docs:
+    path: /v3/api-docs
+#
+server:
+  media:
+    host: ${DHKIM92_MEDIA_HOST:http://localhost:8080}
+    path: ${DHKIM92_MEDIA_PATH:/Users/aegis92/.volumes/media}
+
+logging:
+  level:
+    root: ${DHKIM92_LOGGING_LEVEL:INFO}
+#    root: DEBUG
+#    org.springframework.transaction: DEBUG
+#    org.springframework.data.r2dbc: DEBUG
+#    io.r2dbc.postgresql: DEBUG
+#    org.springdoc: DEBUG      # SpringDoc ??? ??
