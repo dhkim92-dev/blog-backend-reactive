@@ -4,7 +4,7 @@ import kr.dhkim92.blog_reactive.application.member.usecases.DeleteMemberUseCase
 import kr.dhkim92.blog_reactive.common.error.NotFoundException
 import kr.dhkim92.blog_reactive.common.error.UnauthorizedException
 import kr.dhkim92.blog_reactive.common.error.ForbiddenException
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.member.Member
 import kr.dhkim92.blog_reactive.port.persistence.member.MemberRepository
 import org.springframework.stereotype.Service

@@ -2,8 +2,8 @@ package kr.dhkim92.blog_reactive.domain.board
 
 import kr.dhkim92.blog_reactive.common.error.BadRequestException
 import kr.dhkim92.blog_reactive.common.error.ForbiddenException
-import kr.dhkim92.blog_reactive.domain.BaseDomainEntity
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.BaseDomainEntity
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.member.Member
 import java.time.LocalDateTime
 import java.util.UUID

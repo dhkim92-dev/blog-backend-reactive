@@ -3,7 +3,7 @@ package kr.dhkim92.blog_reactive.interfaces.board.dto
 import io.swagger.v3.oas.annotations.media.Schema
 import jakarta.validation.constraints.NotEmpty
 import kr.dhkim92.blog_reactive.application.board.comment.dto.UpdateCommentCommand
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.board.Comment
 import org.hibernate.validator.constraints.Length
 import java.util.UUID

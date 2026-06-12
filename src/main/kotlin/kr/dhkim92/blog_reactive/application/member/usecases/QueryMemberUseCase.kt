@@ -1,8 +1,8 @@
 package kr.dhkim92.blog_reactive.application.member.usecases
 
-import kr.dhkim92.blog_reactive.application.auth.oauth2.dto.OAuth2UserInfo
+import kr.dhkim92.blog_reactive.auth.application.oauth2.dto.OAuth2UserInfo
 import kr.dhkim92.blog_reactive.application.member.dto.MemberDto
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.member.Member
 import reactor.core.publisher.Mono
 import java.util.UUID

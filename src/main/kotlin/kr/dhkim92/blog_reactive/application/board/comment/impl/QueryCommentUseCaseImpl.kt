@@ -2,7 +2,7 @@ package kr.dhkim92.blog_reactive.application.board.comment.impl
 
 import kr.dhkim92.blog_reactive.application.board.comment.dto.CommentQueryModelDto
 import kr.dhkim92.blog_reactive.application.board.comment.usecases.QueryCommentUseCase
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.board.Article
 import kr.dhkim92.blog_reactive.domain.board.Comment
 import kr.dhkim92.blog_reactive.port.persistence.board.CommentRepository

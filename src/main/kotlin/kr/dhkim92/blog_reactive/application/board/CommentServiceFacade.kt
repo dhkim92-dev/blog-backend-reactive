@@ -8,7 +8,7 @@ import kr.dhkim92.blog_reactive.application.board.comment.usecases.CreateReplyUs
 import kr.dhkim92.blog_reactive.application.board.comment.usecases.DeleteCommentUseCase
 import kr.dhkim92.blog_reactive.application.board.comment.usecases.QueryCommentUseCase
 import kr.dhkim92.blog_reactive.application.board.comment.usecases.UpdateCommentUseCase
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.board.Article
 import kr.dhkim92.blog_reactive.domain.board.Comment
 import kr.dhkim92.blog_reactive.domain.member.Member

@@ -5,7 +5,7 @@ import kr.dhkim92.blog_reactive.application.board.category.dto.CreateCategoryCom
 import kr.dhkim92.blog_reactive.application.board.category.usecases.CreateCategoryUseCase
 import kr.dhkim92.blog_reactive.common.error.ConflictException
 import kr.dhkim92.blog_reactive.common.error.NotFoundException
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.board.Category
 import kr.dhkim92.blog_reactive.domain.member.Member
 import kr.dhkim92.blog_reactive.port.persistence.board.CategoryRepository

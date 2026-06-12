@@ -1,6 +1,6 @@
 package kr.dhkim92.blog_reactive.domain.board.mapper
 
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.board.Category
 import kr.dhkim92.blog_reactive.domain.board.r2dbc.CategoryEntity
 

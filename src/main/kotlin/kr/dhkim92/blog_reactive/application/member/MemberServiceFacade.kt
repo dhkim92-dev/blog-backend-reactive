@@ -1,13 +1,13 @@
 package kr.dhkim92.blog_reactive.application.member
 
-import kr.dhkim92.blog_reactive.application.auth.oauth2.dto.OAuth2UserInfo
+import kr.dhkim92.blog_reactive.auth.application.oauth2.dto.OAuth2UserInfo
 import kr.dhkim92.blog_reactive.application.member.dto.CreateMemberCommand
 import kr.dhkim92.blog_reactive.application.member.dto.UpdateMemberCommand
 import kr.dhkim92.blog_reactive.application.member.usecases.CreateMemberUseCase
 import kr.dhkim92.blog_reactive.application.member.usecases.DeleteMemberUseCase
 import kr.dhkim92.blog_reactive.application.member.usecases.QueryMemberUseCase
 import kr.dhkim92.blog_reactive.application.member.usecases.UpdateMemberUseCase
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.member.Member
 import org.springframework.stereotype.Service
 import java.util.UUID

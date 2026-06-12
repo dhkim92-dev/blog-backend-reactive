@@ -1,8 +1,7 @@
 package kr.dhkim92.blog_reactive.interfaces.auth.dto
 
 import io.swagger.v3.oas.annotations.media.Schema
-import kr.dhkim92.blog_reactive.application.auth.dto.LoginResult
-import reactor.core.publisher.Mono
+import kr.dhkim92.blog_reactive.auth.application.dto.LoginResult
 
 @Schema(description = "Login Response")
 class LoginResponse(

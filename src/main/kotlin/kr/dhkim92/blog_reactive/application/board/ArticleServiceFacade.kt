@@ -7,7 +7,7 @@ import kr.dhkim92.blog_reactive.application.board.post.usecases.DeletePostUseCas
 import kr.dhkim92.blog_reactive.application.board.post.usecases.QueryPostUseCase
 import kr.dhkim92.blog_reactive.application.board.post.usecases.UpdatePostUseCase
 import org.springframework.stereotype.Service
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.board.Article
 import kr.dhkim92.blog_reactive.domain.board.Category
 import kr.dhkim92.blog_reactive.domain.member.Member

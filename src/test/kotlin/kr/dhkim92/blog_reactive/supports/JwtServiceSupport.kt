@@ -1,9 +1,9 @@
 package kr.dhkim92.blog_reactive.supports
 
 import io.kotest.core.spec.style.AnnotationSpec
-import kr.dhkim92.blog_reactive.application.auth.jwt.JwtService
+import kr.dhkim92.blog_reactive.auth.application.JwtService
 import kr.dhkim92.blog_reactive.config.JwtConfig
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.member.Member
 import org.springframework.beans.factory.annotation.Value
 import java.util.UUID

@@ -1,10 +1,10 @@
 package kr.dhkim92.blog_reactive.config
 
-import kr.dhkim92.blog_reactive.application.auth.jwt.JwtService
-import kr.dhkim92.blog_reactive.application.auth.oauth2.CustomOAuthRequestResolver
-import kr.dhkim92.blog_reactive.application.auth.oauth2.handler.OAuth2LoginFailedHandler
-import kr.dhkim92.blog_reactive.application.auth.oauth2.handler.OAuth2LoginSuccessHandler
-import kr.dhkim92.blog_reactive.application.auth.oauth2.repository.CookieOAuth2AuthorizationRequestRepository
+import kr.dhkim92.blog_reactive.auth.application.JwtService
+import kr.dhkim92.blog_reactive.auth.application.oauth2.CustomOAuthRequestResolver
+import kr.dhkim92.blog_reactive.auth.application.oauth2.handler.OAuth2LoginFailedHandler
+import kr.dhkim92.blog_reactive.auth.application.oauth2.handler.OAuth2LoginSuccessHandler
+import kr.dhkim92.blog_reactive.auth.application.oauth2.repository.CookieOAuth2AuthorizationRequestRepository
 import kr.dhkim92.blog_reactive.common.jwt.JwtAuthenticationFilter
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean

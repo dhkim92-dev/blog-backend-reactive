@@ -1,12 +1,10 @@
 package kr.dhkim92.blog_reactive.domain.board
 
 import kr.dhkim92.blog_reactive.common.error.ForbiddenException
-import kr.dhkim92.blog_reactive.domain.BaseDomainEntity
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.BaseDomainEntity
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.member.Member
-import kr.dhkim92.blog_reactive.domain.member.MemberRole
-import kr.dhkim92.blog_reactive.domain.member.RefreshToken
-import java.util.UUID
+import kr.dhkim92.blog_reactive.auth.domain.AuthRole
 
 class Category(
     val id: Id<Category, Long>? = null,
@@ -49,7 +47,7 @@ class Category(
 
     companion object {
         fun create(requester: Member, name: String): Category {
-            if ( requester.role != MemberRole.ADMIN ) {
+            if ( requester.role != AuthRole.ADMIN ) {
                 throw ForbiddenException()
             }
             return Category(

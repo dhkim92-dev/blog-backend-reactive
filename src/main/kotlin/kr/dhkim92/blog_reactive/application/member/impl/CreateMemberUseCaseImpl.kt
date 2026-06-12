@@ -1,12 +1,12 @@
 package kr.dhkim92.blog_reactive.application.member.impl
 
-import kr.dhkim92.blog_reactive.application.auth.oauth2.dto.OAuth2UserInfo
+import kr.dhkim92.blog_reactive.auth.application.oauth2.dto.OAuth2UserInfo
 import kr.dhkim92.blog_reactive.application.member.dto.CreateMemberCommand
 import kr.dhkim92.blog_reactive.application.member.dto.MemberDto
 import kr.dhkim92.blog_reactive.application.member.usecases.CreateMemberUseCase
 import kr.dhkim92.blog_reactive.common.error.ConflictException
 import kr.dhkim92.blog_reactive.domain.member.Member
-import kr.dhkim92.blog_reactive.domain.member.MemberRole
+import kr.dhkim92.blog_reactive.auth.domain.AuthRole
 import kr.dhkim92.blog_reactive.domain.member.OAuth2Info
 import kr.dhkim92.blog_reactive.port.persistence.member.MemberRepository
 import org.springframework.security.crypto.password.PasswordEncoder
@@ -33,7 +33,7 @@ class CreateMemberUseCaseImpl(
                     nickname = command.nickname,
                     email = command.email,
                     password = encodedPassword,
-                    role = MemberRole.MEMBER
+                    role = AuthRole.MEMBER
                 )
                 memberRepository.save(member)
             }
@@ -51,7 +51,7 @@ class CreateMemberUseCaseImpl(
                     nickname = userInfo.getNickName(),
                     email = "${userInfo.getUserId()}@dohoon-kim.kr",
                     password = passwordEncoder.encode(UUID.randomUUID().toString()),
-                    role = MemberRole.MEMBER)
+                    role = AuthRole.MEMBER)
                 ).flatMap {
                     linkOAuth2InfoToMember(it, userInfo)
                     memberRepository.save(it)

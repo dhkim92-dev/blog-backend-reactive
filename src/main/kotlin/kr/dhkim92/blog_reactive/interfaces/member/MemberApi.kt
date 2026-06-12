@@ -4,7 +4,7 @@ import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.tags.Tag
 import kr.dhkim92.blog_reactive.common.annotations.Envelope
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.member.Member
 import kr.dhkim92.blog_reactive.interfaces.member.dto.CreateMemberRequest
 import kr.dhkim92.blog_reactive.interfaces.member.dto.MemberResponse

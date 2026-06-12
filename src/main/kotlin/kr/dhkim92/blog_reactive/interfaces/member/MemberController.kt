@@ -4,7 +4,7 @@ import jakarta.validation.Valid
 import kr.dhkim92.blog_reactive.application.member.MemberServiceFacade
 import kr.dhkim92.blog_reactive.common.annotations.Envelope
 import kr.dhkim92.blog_reactive.common.annotations.Login
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.member.Member
 import kr.dhkim92.blog_reactive.interfaces.member.dto.CreateMemberRequest
 import kr.dhkim92.blog_reactive.interfaces.member.dto.MemberResponse

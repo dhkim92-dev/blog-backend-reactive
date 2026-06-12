@@ -2,7 +2,7 @@ package kr.dhkim92.blog_reactive.common.resolvers
 
 import kr.dhkim92.blog_reactive.common.annotations.Login
 import kr.dhkim92.blog_reactive.common.jwt.JwtPrincipal
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.member.Member
 import org.springframework.core.MethodParameter
 import org.springframework.security.core.context.ReactiveSecurityContextHolder

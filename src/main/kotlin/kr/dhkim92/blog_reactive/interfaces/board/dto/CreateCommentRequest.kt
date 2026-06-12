@@ -2,7 +2,7 @@ package kr.dhkim92.blog_reactive.interfaces.board.dto
 
 import io.swagger.v3.oas.annotations.media.Schema
 import kr.dhkim92.blog_reactive.application.board.comment.dto.CreateCommentCommand
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.board.Article
 import java.util.UUID
 

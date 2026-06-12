@@ -1,7 +1,7 @@
 package kr.dhkim92.blog_reactive.application.board.category.impl
 
 import kr.dhkim92.blog_reactive.application.board.category.usecases.DeleteCategoryUseCase
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.board.Category
 import kr.dhkim92.blog_reactive.port.persistence.board.CategoryRepository
 import org.springframework.stereotype.Service

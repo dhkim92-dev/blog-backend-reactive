@@ -1,8 +1,7 @@
 package kr.dhkim92.blog_reactive.application.member.dto
 
 import kr.dhkim92.blog_reactive.domain.member.Member
-import kr.dhkim92.blog_reactive.domain.member.MemberRole
-import reactor.core.publisher.Mono
+import kr.dhkim92.blog_reactive.auth.domain.AuthRole
 import java.time.LocalDateTime
 import java.util.UUID
 
@@ -10,7 +9,7 @@ class MemberDto(
     val id: UUID,
     val email: String,
     val nickname: String,
-    val role: MemberRole,
+    val role: AuthRole,
     val isBlocked: Boolean,
     val createdAt: LocalDateTime,
     val updatedAt: LocalDateTime

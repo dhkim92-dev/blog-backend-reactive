@@ -4,7 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 import jakarta.validation.constraints.Min
 import jakarta.validation.constraints.NotEmpty
 import kr.dhkim92.blog_reactive.application.board.post.dto.UpdatePostCommand
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.board.Article
 import kr.dhkim92.blog_reactive.domain.board.Category
 import java.util.UUID

@@ -1,6 +1,6 @@
 package kr.dhkim92.blog_reactive.domain.member.r2dbc
 
-import kr.dhkim92.blog_reactive.domain.member.MemberRole
+import kr.dhkim92.blog_reactive.auth.domain.AuthRole
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.LastModifiedDate
@@ -22,7 +22,7 @@ class MemberEntity(
     @Column("nickname")
     var nickname: String,
     @Column("role")
-    var role: MemberRole = MemberRole.MEMBER,
+    var role: AuthRole = AuthRole.MEMBER,
     @Column("is_blocked")
     var isBlocked: Boolean = false,
     @CreatedDate

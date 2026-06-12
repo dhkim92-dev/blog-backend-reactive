@@ -1,6 +1,6 @@
 package kr.dhkim92.blog_reactive.port.persistence.member.r2dbc
 
-import kr.dhkim92.blog_reactive.domain.member.RefreshToken
+import kr.dhkim92.blog_reactive.auth.domain.RefreshToken
 import kr.dhkim92.blog_reactive.domain.member.r2dbc.RefreshTokenEntity
 import org.springframework.data.r2dbc.repository.R2dbcRepository
 import reactor.core.publisher.Flux

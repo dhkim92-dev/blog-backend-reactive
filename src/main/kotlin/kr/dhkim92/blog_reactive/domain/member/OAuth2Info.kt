@@ -1,7 +1,7 @@
 package kr.dhkim92.blog_reactive.domain.member
 
-import kr.dhkim92.blog_reactive.domain.BaseDomainEntity
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.BaseDomainEntity
+import kr.dhkim92.blog_reactive.common.entity.Id
 import java.time.LocalDateTime
 import java.util.UUID
 

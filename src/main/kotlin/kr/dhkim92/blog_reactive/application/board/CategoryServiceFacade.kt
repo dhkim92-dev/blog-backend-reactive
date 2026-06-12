@@ -6,7 +6,7 @@ import kr.dhkim92.blog_reactive.application.board.category.usecases.CreateCatego
 import kr.dhkim92.blog_reactive.application.board.category.usecases.DeleteCategoryUseCase
 import kr.dhkim92.blog_reactive.application.board.category.usecases.QueryCategoryUseCase
 import kr.dhkim92.blog_reactive.application.board.category.usecases.UpdateCategoryUseCase
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.board.Category
 import kr.dhkim92.blog_reactive.domain.member.Member
 import org.springframework.stereotype.Service

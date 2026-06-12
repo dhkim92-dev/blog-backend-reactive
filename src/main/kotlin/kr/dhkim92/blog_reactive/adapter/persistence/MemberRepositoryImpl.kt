@@ -1,9 +1,9 @@
 package kr.dhkim92.blog_reactive.adapter.persistence
 
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.member.Member
 import kr.dhkim92.blog_reactive.domain.member.OAuth2Info
-import kr.dhkim92.blog_reactive.domain.member.RefreshToken
+import kr.dhkim92.blog_reactive.auth.domain.RefreshToken
 import kr.dhkim92.blog_reactive.domain.member.mapper.MemberMapper
 import kr.dhkim92.blog_reactive.domain.member.mapper.OAuth2InfoMapper
 import kr.dhkim92.blog_reactive.domain.member.mapper.RefreshTokenMapper

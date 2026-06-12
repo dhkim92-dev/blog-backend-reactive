@@ -5,7 +5,7 @@ import kr.dhkim92.blog_reactive.application.board.comment.dto.CreateCommentComma
 import kr.dhkim92.blog_reactive.application.board.comment.usecases.CreateCommentUseCase
 import kr.dhkim92.blog_reactive.common.error.ForbiddenException
 import kr.dhkim92.blog_reactive.common.error.NotFoundException
-import kr.dhkim92.blog_reactive.domain.Id
+import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.board.Comment
 import kr.dhkim92.blog_reactive.domain.member.Member
 import kr.dhkim92.blog_reactive.port.persistence.board.ArticleRepository
