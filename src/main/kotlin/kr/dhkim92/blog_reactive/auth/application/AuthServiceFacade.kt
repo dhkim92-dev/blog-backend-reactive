@@ -6,6 +6,7 @@ import kr.dhkim92.blog_reactive.auth.application.port.`in`.usecase.LoginByEmailP
 import kr.dhkim92.blog_reactive.auth.application.port.`in`.usecase.LoginByOAuth2UseCase
 import kr.dhkim92.blog_reactive.auth.application.port.`in`.usecase.LogoutUseCase
 import kr.dhkim92.blog_reactive.auth.application.port.`in`.usecase.ReissueJwtUseCase
+import kr.dhkim92.blog_reactive.auth.domain.AuthAccount
 import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.member.Member
 import org.springframework.stereotype.Service
@@ -21,12 +22,11 @@ class AuthServiceFacade(
     private val logoutUseCase: LogoutUseCase
 ) {
 
-    fun loginByEmailPassword(command: LoginCommand) = loginByEmailPasswordUseCase.login(command)
+    fun loginByEmailPassword(command: LoginCommand) = loginByEmailPasswordUseCase.execute(command)
 
-    fun loginByOAuth2UserInfo(userInfo: OAuth2UserInfo) = loginByOAuth2UseCase.login(userInfo)
+    fun loginByOAuth2UserInfo(userInfo: OAuth2UserInfo) = loginByOAuth2UseCase.execute(userInfo)
 
-    fun reissueJwt(refreshToken: String) = reissueJwtUseCase.reissue(refreshToken)
+    fun reissueJwt(refreshToken: String) = reissueJwtUseCase.execute(refreshToken)
 
-    fun logout(loginId: Id<Member, UUID>, refreshToken: String) =
-        logoutUseCase.logout(loginId, refreshToken)
+    fun logout(loginId: Id<AuthAccount, UUID>, refreshToken: String) = logoutUseCase.execute(loginId, refreshToken)
 }

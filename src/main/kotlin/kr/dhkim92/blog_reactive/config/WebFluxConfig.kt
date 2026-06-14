@@ -1,5 +1,6 @@
 package kr.dhkim92.blog_reactive.config
 
+import kr.dhkim92.blog_reactive.common.resolvers.AuthIdResolver
 import kr.dhkim92.blog_reactive.common.resolvers.LoginIdResolver
 import kr.dhkim92.blog_reactive.common.response.EnvelopResponseHandler
 import org.springframework.context.annotation.Bean
@@ -12,24 +13,14 @@ import org.springframework.web.reactive.result.method.annotation.ArgumentResolve
 
 @Configuration
 class WebFluxConfig(
-    private val loginIdResolver: LoginIdResolver
+    private val loginIdResolver: LoginIdResolver,
+    private val authIdResolver: AuthIdResolver
 ) : WebFluxConfigurer {
 
     override fun configureArgumentResolvers(configurer: ArgumentResolverConfigurer) {
         configurer.addCustomResolver(loginIdResolver)
+        configurer.addCustomResolver(authIdResolver)
     }
-//
-//
-//    override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
-//        registry.addResourceHandler("/swagger-ui.html**")
-//            .addResourceLocations("classpath:/META-INF/resources/")
-//
-//        registry.addResourceHandler("/swagger-ui/**")
-//            .addResourceLocations("classpath:/META-INF/resources/webjars/swagger-ui/")
-//
-//        registry.addResourceHandler("/webjars/**")
-//            .addResourceLocations("classpath:/META-INF/resources/webjars/")
-//    }
 
     @Bean
     fun envelopResponseHandler(

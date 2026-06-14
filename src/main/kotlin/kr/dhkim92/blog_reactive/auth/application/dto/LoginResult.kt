@@ -1,5 +1,7 @@
 package kr.dhkim92.blog_reactive.auth.application.dto
 
+import kr.dhkim92.blog_reactive.common.jwt.JwtToken
+
 data class LoginResult(
     val type: String = "Bearer",
     val refreshToken: String="",

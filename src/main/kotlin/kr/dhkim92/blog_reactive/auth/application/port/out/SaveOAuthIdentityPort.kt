@@ -5,5 +5,5 @@ import reactor.core.publisher.Mono
 
 interface SaveOAuthIdentityPort {
 
-    fun save(entity: OAuthIdentity): Mono<OAuthIdentity>
+    fun save(identity: OAuthIdentity): Mono<OAuthIdentity>
 }

@@ -1,11 +1,12 @@
 package kr.dhkim92.blog_reactive.common.entity
 
-import java.time.LocalDateTime
+import java.time.Instant
+
 
 abstract class BaseDomainEntity<C : Any, T: Any> (
     id: Id<C, T>? = null,
-    open var createdAt: LocalDateTime = LocalDateTime.now(),
-    open var updatedAt: LocalDateTime = LocalDateTime.now(),
+    open var createdAt: Instant = Instant.now(),
+    open var updatedAt: Instant = Instant.now(),
     open var isDeleted: Boolean = false
 ) {
 

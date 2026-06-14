@@ -1,6 +1,6 @@
 package kr.dhkim92.blog_reactive.common.jwt
 
-import kr.dhkim92.blog_reactive.auth.application.JwtService
+import kr.dhkim92.blog_reactive.common.jwt.JwtService
 import org.springframework.http.HttpHeaders
 import org.springframework.http.server.reactive.ServerHttpRequest
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken

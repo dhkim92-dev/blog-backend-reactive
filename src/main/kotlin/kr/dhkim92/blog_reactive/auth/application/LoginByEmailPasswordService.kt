@@ -2,21 +2,17 @@ package kr.dhkim92.blog_reactive.auth.application
 
 import kr.dhkim92.blog_reactive.auth.application.dto.LoginCommand
 import kr.dhkim92.blog_reactive.auth.application.dto.LoginResult
-import kr.dhkim92.blog_reactive.auth.application.JwtService
-import kr.dhkim92.blog_reactive.auth.application.dto.JwtClaims
+import kr.dhkim92.blog_reactive.common.jwt.JwtService
+import kr.dhkim92.blog_reactive.common.jwt.JwtClaims
 import kr.dhkim92.blog_reactive.auth.application.port.`in`.usecase.AddAuthSessionUseCase
 import kr.dhkim92.blog_reactive.auth.application.port.`in`.usecase.CleanExpiredAuthSessionUseCase
 import kr.dhkim92.blog_reactive.auth.application.port.`in`.usecase.LoginByEmailPasswordUseCase
 import kr.dhkim92.blog_reactive.auth.application.port.out.LoadAuthAccountPort
-import kr.dhkim92.blog_reactive.auth.application.port.out.LoadAuthSessionPort
 import kr.dhkim92.blog_reactive.auth.application.port.out.LoadEmailPasswordCredentialPort
 import kr.dhkim92.blog_reactive.auth.application.port.out.LoadMemberPort
 import kr.dhkim92.blog_reactive.auth.domain.AuthAccount
 import kr.dhkim92.blog_reactive.auth.domain.AuthSession
-import kr.dhkim92.blog_reactive.auth.domain.EmailPasswordCredential
 import kr.dhkim92.blog_reactive.auth.domain.exceptions.InvalidCredentialException
-import kr.dhkim92.blog_reactive.common.data.Email
-import kr.dhkim92.blog_reactive.common.error.NotFoundException
 import kr.dhkim92.blog_reactive.common.error.UnauthorizedException
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
@@ -56,7 +52,7 @@ class LoginByEmailPasswordService(
                     return@flatMap Mono.error(UnauthorizedException(message = "활성화 되지 않은 계정입니다"))
                 }
 
-                val memberMono = loadMemberPort.findById(account.memberId)
+                val memberMono = loadMemberPort.findByAuthAccountId(account.identifier)
                     .switchIfEmpty{ Mono.error { InvalidCredentialException() } }
                 val cleanUpMono = cleanUpAuthSessionUseCase.execute(account.identifier)
                     .thenReturn(account)

@@ -9,6 +9,4 @@ import java.util.UUID
 interface LoadAuthAccountPort {
 
     fun findById(id: Id<AuthAccount, UUID>): Mono<AuthAccount>
-
-    fun findByMemberId(memberId: Id<Member, UUID>): Mono<AuthAccount>
 }

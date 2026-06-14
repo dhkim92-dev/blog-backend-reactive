@@ -2,7 +2,7 @@ package kr.dhkim92.blog_reactive.auth.application
 
 import kr.dhkim92.blog_reactive.auth.application.dto.LoginResult
 import kr.dhkim92.blog_reactive.auth.application.oauth2.dto.OAuth2UserInfo
-import kr.dhkim92.blog_reactive.auth.application.dto.JwtClaims
+import kr.dhkim92.blog_reactive.common.jwt.JwtClaims
 import kr.dhkim92.blog_reactive.auth.application.port.`in`.usecase.AddAuthSessionUseCase
 import kr.dhkim92.blog_reactive.auth.application.port.`in`.usecase.CleanExpiredAuthSessionUseCase
 import kr.dhkim92.blog_reactive.auth.application.port.`in`.usecase.LoginByOAuth2UseCase
@@ -16,6 +16,7 @@ import kr.dhkim92.blog_reactive.auth.domain.exceptions.NotActiveAuthAccountExcep
 import kr.dhkim92.blog_reactive.auth.domain.exceptions.NotExistAuthAccountException
 import kr.dhkim92.blog_reactive.auth.domain.exceptions.NotExistOAuthIdentityException
 import kr.dhkim92.blog_reactive.common.error.NotFoundException
+import kr.dhkim92.blog_reactive.common.jwt.JwtService
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -55,7 +56,7 @@ class LoginByOAuth2Service(
 
                 val cleanUpSessionMono = cleanExpiredAuthSessionUseCase.execute(account.identifier)
                     .thenReturn(account)
-                val memberMono = loadMemberPort.findById(account.memberId)
+                val memberMono = loadMemberPort.findByAuthAccountId(account.identifier)
                     .switchIfEmpty(Mono.error(NotFoundException(message= "Member not exists")))
 
                 Mono.zip(cleanUpSessionMono, memberMono)

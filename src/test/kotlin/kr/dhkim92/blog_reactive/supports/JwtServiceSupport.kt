@@ -1,7 +1,7 @@
 package kr.dhkim92.blog_reactive.supports
 
 import io.kotest.core.spec.style.AnnotationSpec
-import kr.dhkim92.blog_reactive.auth.application.JwtService
+import kr.dhkim92.blog_reactive.common.jwt.JwtService
 import kr.dhkim92.blog_reactive.config.JwtConfig
 import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.domain.member.Member

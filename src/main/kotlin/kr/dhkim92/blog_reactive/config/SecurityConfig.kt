@@ -1,6 +1,6 @@
 package kr.dhkim92.blog_reactive.config
 
-import kr.dhkim92.blog_reactive.auth.application.JwtService
+import kr.dhkim92.blog_reactive.common.jwt.JwtService
 import kr.dhkim92.blog_reactive.auth.application.oauth2.CustomOAuthRequestResolver
 import kr.dhkim92.blog_reactive.auth.application.oauth2.handler.OAuth2LoginFailedHandler
 import kr.dhkim92.blog_reactive.auth.application.oauth2.handler.OAuth2LoginSuccessHandler

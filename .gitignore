@@ -1,0 +1,68 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Eclipse / STS
+.project
+.classpath
+.settings/
+.springBeans
+.sts4-cache/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Spring Boot
+application-local.yml
+application-local.properties
+application-dev.yml
+application-dev.properties
+application-prod.yml
+application-prod.properties
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Test / coverage
+target/
+coverage/
+*.exec
+
+# Java
+*.class
+hs_err_pid*
+replay_pid*
+
+# Kotlin, if used
+.kotlin/
+
+# Generated files
+generated/
+
+# Docker override files
+docker-compose.override.yml
+
+# Secrets / certificates
+*.pem
+*.key
+*.crt
+*.p12
+*.jks

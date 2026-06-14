@@ -7,5 +7,5 @@ interface SaveAuthSessionPort {
 
     fun save(session: AuthSession): Mono<AuthSession>
 
-    fun delete(session: AuthSession): Mono<Unit>
+    fun delete(session: AuthSession): Mono<Void>
 }

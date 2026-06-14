@@ -7,10 +7,10 @@ import io.kotest.matchers.types.shouldBeInstanceOf
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import kr.dhkim92.blog_reactive.auth.application.JwtService
+import kr.dhkim92.blog_reactive.common.jwt.JwtService
 import kr.dhkim92.blog_reactive.auth.application.ReissueJwtService
-import kr.dhkim92.blog_reactive.auth.application.dto.JwtClaims
-import kr.dhkim92.blog_reactive.auth.application.dto.JwtToken
+import kr.dhkim92.blog_reactive.common.jwt.JwtClaims
+import kr.dhkim92.blog_reactive.common.jwt.JwtToken
 import kr.dhkim92.blog_reactive.auth.application.port.out.LoadAuthAccountPort
 import kr.dhkim92.blog_reactive.auth.application.port.out.LoadAuthSessionPort
 import kr.dhkim92.blog_reactive.auth.application.port.out.LoadMemberPort

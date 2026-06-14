@@ -2,7 +2,7 @@ package kr.dhkim92.blog_reactive.auth.application
 
 import com.auth0.jwt.exceptions.JWTVerificationException
 import com.auth0.jwt.interfaces.DecodedJWT
-import kr.dhkim92.blog_reactive.auth.application.dto.JwtClaims
+import kr.dhkim92.blog_reactive.common.jwt.JwtClaims
 import kr.dhkim92.blog_reactive.auth.application.dto.LoginResult
 import kr.dhkim92.blog_reactive.auth.application.port.`in`.usecase.ReissueJwtUseCase
 import kr.dhkim92.blog_reactive.auth.application.port.out.LoadAuthAccountPort
@@ -15,7 +15,7 @@ import kr.dhkim92.blog_reactive.auth.domain.AuthSession
 import kr.dhkim92.blog_reactive.auth.domain.exceptions.NotActiveAuthAccountException
 import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.common.error.UnauthorizedException
-import kr.dhkim92.blog_reactive.domain.member.Member
+import kr.dhkim92.blog_reactive.common.jwt.JwtService
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import reactor.core.publisher.Mono
@@ -46,15 +46,13 @@ class ReissueJwtService(
             return Mono.error(UnauthorizedException("Invalid refresh token"))
         }
 
-        val authMemberId = runCatching {
-            Id.of<AuthMember, UUID>(AuthMember::class, UUID.fromString(decoded.subject))
+        val authAccountId = runCatching {
+            Id.of(AuthAccount::class, UUID.fromString(decoded.subject))
         }.getOrElse {
             return Mono.error(UnauthorizedException("Invalid refresh token subject"))
         }
 
-        val memberId = Id.of<Member, UUID>(Member::class, authMemberId.value)
-
-        return loadContext(authMemberId, memberId, refreshToken)
+        return loadContext(authAccountId,refreshToken)
             .flatMap { context -> reissueTokens(context, decoded, refreshToken) }
     }
 
@@ -67,11 +65,10 @@ class ReissueJwtService(
     }
 
     private fun loadContext(
-        authMemberId: Id<AuthMember, UUID>,
-        memberId: Id<Member, UUID>,
+        authAccountId: Id<AuthAccount, UUID>,
         refreshToken: String
     ): Mono<ReissueContext> {
-        val authAccountMono = loadAuthAccountPort.findByMemberId(memberId)
+        val authAccountMono = loadAuthAccountPort.findById(authAccountId)
             .switchIfEmpty(Mono.error(UnauthorizedException("Unauthorized")))
             .flatMap { authAccount ->
                 if (!authAccount.isActive()) {
@@ -81,7 +78,7 @@ class ReissueJwtService(
             }
 
         return authAccountMono.flatMap { authAccount ->
-            val authMemberMono = loadMemberPort.findById(authMemberId)
+            val authMemberMono = loadMemberPort.findByAuthAccountId(authAccountId)
                 .switchIfEmpty(Mono.error(UnauthorizedException("Unauthorized")))
 
             val authSessionMono = loadAuthSessionPort.findByAuthAccountId(authAccount.identifier)

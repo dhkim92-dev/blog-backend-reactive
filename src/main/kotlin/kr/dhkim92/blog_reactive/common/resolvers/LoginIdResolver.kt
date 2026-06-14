@@ -3,7 +3,9 @@ package kr.dhkim92.blog_reactive.common.resolvers
 import kr.dhkim92.blog_reactive.common.annotations.Login
 import kr.dhkim92.blog_reactive.common.jwt.JwtPrincipal
 import kr.dhkim92.blog_reactive.common.entity.Id
-import kr.dhkim92.blog_reactive.domain.member.Member
+import kr.dhkim92.blog_reactive.common.error.ForbiddenException
+import kr.dhkim92.blog_reactive.common.error.UnauthorizedException
+import kr.dhkim92.blog_reactive.common.jwt.LoginMember
 import org.springframework.core.MethodParameter
 import org.springframework.security.core.context.ReactiveSecurityContextHolder
 import org.springframework.stereotype.Component
@@ -33,10 +35,13 @@ class LoginIdResolver : HandlerMethodArgumentResolver {
             .map { context ->
                 val principal = context.authentication.principal
                 if (principal is JwtPrincipal) {
+                    if ( principal.memberId == null ) {
+                        return@map Mono.error<Any>(ForbiddenException())
+                    }
                     when (parameter.parameterType) {
-                        UUID::class.java -> Id.of(Member::class, UUID.fromString(principal.id))
-                        String::class.java -> principal.id
-                        Id::class.java -> Id.of(Member::class, UUID.fromString(principal.id))
+                        UUID::class.java -> UUID.fromString(principal.memberId)
+                        String::class.java -> principal.memberId
+                        Id::class.java -> Id.of(LoginMember::class, UUID.fromString(principal.memberId))
                         else -> throw IllegalStateException("지원하지 않는 파라미터 타입: ${parameter.parameterType}")
                     }
                 } else {

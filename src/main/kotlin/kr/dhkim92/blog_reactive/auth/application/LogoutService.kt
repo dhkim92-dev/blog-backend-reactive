@@ -4,14 +4,12 @@ import kr.dhkim92.blog_reactive.auth.application.port.`in`.usecase.LogoutUseCase
 import kr.dhkim92.blog_reactive.auth.application.port.out.LoadAuthAccountPort
 import kr.dhkim92.blog_reactive.auth.application.port.out.LoadAuthSessionPort
 import kr.dhkim92.blog_reactive.auth.application.port.out.SaveAuthSessionPort
-import kr.dhkim92.blog_reactive.auth.domain.AuthSession
+import kr.dhkim92.blog_reactive.auth.domain.AuthAccount
 import kr.dhkim92.blog_reactive.common.entity.Id
 import kr.dhkim92.blog_reactive.common.error.UnauthorizedException
-import kr.dhkim92.blog_reactive.domain.member.Member
-import kr.dhkim92.blog_reactive.port.persistence.member.MemberRepository
+import kr.dhkim92.blog_reactive.common.jwt.JwtService
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import java.util.UUID
 
@@ -26,7 +24,7 @@ class LogoutService(
 
     @Transactional
     override fun execute(
-        loginId: Id<Member, UUID>,
+        loginId: Id<AuthAccount, UUID>,
         refreshToken: String
     ): Mono<Void> {
         return Mono.defer {
@@ -46,7 +44,7 @@ class LogoutService(
                 return@defer Mono.error<Void>(UnauthorizedException())
             }
 
-            loadAuthAccountPort.findByMemberId(loginId)
+            loadAuthAccountPort.findById(loginId)
                 .switchIfEmpty(Mono.error(UnauthorizedException()))
                 .flatMapMany { account ->
                     loadAuthSessionPort.findByAuthAccountId(account.identifier)
